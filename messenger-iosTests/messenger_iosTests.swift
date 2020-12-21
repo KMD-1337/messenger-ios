@@ -2,7 +2,7 @@
 //  messenger_iosTests.swift
 //  messenger-iosTests
 //
-//  Created by Kirill on 02.12.2020.
+//  Created by Dima on 20.12.2020.
 //
 
 import XCTest
