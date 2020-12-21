@@ -9,12 +9,18 @@
 /* Begin PBXBuildFile section */
 		32AE3A3F258FD25000398C64 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AE3A3E258FD25000398C64 /* AppDelegate.swift */; };
 		32AE3A41258FD25000398C64 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AE3A40258FD25000398C64 /* SceneDelegate.swift */; };
-		32AE3A43258FD25000398C64 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AE3A42258FD25000398C64 /* ViewController.swift */; };
+		32AE3A43258FD25000398C64 /* ConservationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AE3A42258FD25000398C64 /* ConservationsViewController.swift */; };
 		32AE3A46258FD25000398C64 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32AE3A44258FD25000398C64 /* Main.storyboard */; };
 		32AE3A48258FD25400398C64 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32AE3A47258FD25400398C64 /* Assets.xcassets */; };
 		32AE3A4B258FD25400398C64 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32AE3A49258FD25400398C64 /* LaunchScreen.storyboard */; };
 		32AE3A56258FD25600398C64 /* messenger_iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AE3A55258FD25600398C64 /* messenger_iosTests.swift */; };
 		32AE3A61258FD25700398C64 /* messenger_iosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AE3A60258FD25700398C64 /* messenger_iosUITests.swift */; };
+		ED97E4242590F72B00A1A0E7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED97E4232590F72B00A1A0E7 /* LoginViewController.swift */; };
+		ED97E42C2590F78100A1A0E7 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED97E42B2590F78100A1A0E7 /* RegisterViewController.swift */; };
+		ED97E4312590F7B300A1A0E7 /* PhotoViewerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED97E4302590F7B300A1A0E7 /* PhotoViewerViewController.swift */; };
+		ED97E4362590F7DB00A1A0E7 /* VieoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED97E4352590F7DB00A1A0E7 /* VieoPlayerViewController.swift */; };
+		ED97E43B2590F80E00A1A0E7 /* NewConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED97E43A2590F80E00A1A0E7 /* NewConversationViewController.swift */; };
+		ED97E4402590F83C00A1A0E7 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED97E43F2590F83C00A1A0E7 /* ProfileViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +44,7 @@
 		32AE3A3B258FD25000398C64 /* messenger-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "messenger-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		32AE3A3E258FD25000398C64 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		32AE3A40258FD25000398C64 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		32AE3A42258FD25000398C64 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		32AE3A42258FD25000398C64 /* ConservationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConservationsViewController.swift; sourceTree = "<group>"; };
 		32AE3A45258FD25000398C64 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		32AE3A47258FD25400398C64 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		32AE3A4A258FD25400398C64 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +55,12 @@
 		32AE3A5C258FD25600398C64 /* messenger-iosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "messenger-iosUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		32AE3A60258FD25700398C64 /* messenger_iosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = messenger_iosUITests.swift; sourceTree = "<group>"; };
 		32AE3A62258FD25700398C64 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ED97E4232590F72B00A1A0E7 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		ED97E42B2590F78100A1A0E7 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		ED97E4302590F7B300A1A0E7 /* PhotoViewerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewerViewController.swift; sourceTree = "<group>"; };
+		ED97E4352590F7DB00A1A0E7 /* VieoPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VieoPlayerViewController.swift; sourceTree = "<group>"; };
+		ED97E43A2590F80E00A1A0E7 /* NewConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConversationViewController.swift; sourceTree = "<group>"; };
+		ED97E43F2590F83C00A1A0E7 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,12 +111,11 @@
 		32AE3A3D258FD25000398C64 /* messenger-ios */ = {
 			isa = PBXGroup;
 			children = (
-				32AE3A3E258FD25000398C64 /* AppDelegate.swift */,
-				32AE3A40258FD25000398C64 /* SceneDelegate.swift */,
-				32AE3A42258FD25000398C64 /* ViewController.swift */,
-				32AE3A44258FD25000398C64 /* Main.storyboard */,
-				32AE3A47258FD25400398C64 /* Assets.xcassets */,
-				32AE3A49258FD25400398C64 /* LaunchScreen.storyboard */,
+				ED97E41B2590F49800A1A0E7 /* Resources */,
+				ED97E41A2590F48700A1A0E7 /* ViewModels */,
+				ED97E4192590F47B00A1A0E7 /* Models */,
+				ED97E4182590F47300A1A0E7 /* Views */,
+				ED97E4172590F45F00A1A0E7 /* controllers */,
 				32AE3A4C258FD25400398C64 /* Info.plist */,
 			);
 			path = "messenger-ios";
@@ -126,6 +137,61 @@
 				32AE3A62258FD25700398C64 /* Info.plist */,
 			);
 			path = "messenger-iosUITests";
+			sourceTree = "<group>";
+		};
+		ED97E4172590F45F00A1A0E7 /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				32AE3A42258FD25000398C64 /* ConservationsViewController.swift */,
+				ED97E4232590F72B00A1A0E7 /* LoginViewController.swift */,
+				ED97E42B2590F78100A1A0E7 /* RegisterViewController.swift */,
+				ED97E4302590F7B300A1A0E7 /* PhotoViewerViewController.swift */,
+				ED97E4352590F7DB00A1A0E7 /* VieoPlayerViewController.swift */,
+				ED97E43A2590F80E00A1A0E7 /* NewConversationViewController.swift */,
+				ED97E43F2590F83C00A1A0E7 /* ProfileViewController.swift */,
+			);
+			path = controllers;
+			sourceTree = "<group>";
+		};
+		ED97E4182590F47300A1A0E7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				ED97E41C2590F4DB00A1A0E7 /* Storyboards */,
+				32AE3A47258FD25400398C64 /* Assets.xcassets */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		ED97E4192590F47B00A1A0E7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		ED97E41A2590F48700A1A0E7 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		ED97E41B2590F49800A1A0E7 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				32AE3A3E258FD25000398C64 /* AppDelegate.swift */,
+				32AE3A40258FD25000398C64 /* SceneDelegate.swift */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		ED97E41C2590F4DB00A1A0E7 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				32AE3A44258FD25000398C64 /* Main.storyboard */,
+				32AE3A49258FD25400398C64 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,9 +324,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				32AE3A43258FD25000398C64 /* ViewController.swift in Sources */,
+				ED97E4242590F72B00A1A0E7 /* LoginViewController.swift in Sources */,
+				ED97E42C2590F78100A1A0E7 /* RegisterViewController.swift in Sources */,
+				ED97E43B2590F80E00A1A0E7 /* NewConversationViewController.swift in Sources */,
+				32AE3A43258FD25000398C64 /* ConservationsViewController.swift in Sources */,
+				ED97E4362590F7DB00A1A0E7 /* VieoPlayerViewController.swift in Sources */,
 				32AE3A3F258FD25000398C64 /* AppDelegate.swift in Sources */,
+				ED97E4402590F83C00A1A0E7 /* ProfileViewController.swift in Sources */,
 				32AE3A41258FD25000398C64 /* SceneDelegate.swift in Sources */,
+				ED97E4312590F7B300A1A0E7 /* PhotoViewerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -438,6 +510,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "messenger-ios/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -456,6 +529,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "messenger-ios/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ConservationsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
