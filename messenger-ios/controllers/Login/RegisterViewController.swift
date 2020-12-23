@@ -129,7 +129,7 @@ class RegisterViewController: UIViewController {
     }
     
     @objc private func didTapChangeProfilePic() {
-        print("Change pic called")
+        photoActionSheet()
     }
     
     override func viewDidLayoutSubviews() {
@@ -213,4 +213,38 @@ extension RegisterViewController: UITextFieldDelegate {
         
         return true
     }
+}
+
+extension RegisterViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func photoActionSheet() {
+        let actionSheet = UIAlertController (title: "Set Profile Picture", message: nil, preferredStyle: .actionSheet)
+        actionSheet.addAction(UIAlertAction(title: "Take a photo",
+                                            style: .default,
+                                            handler:nil))
+        actionSheet.addAction(UIAlertAction(title: "Choose a photo ",                                       style: .default,
+                                            handler: { [weak self] _ in
+                                                self?.openPhotos()
+                                            }))
+        actionSheet.addAction(UIAlertAction(title: "Cancel",
+                                            style: .cancel,
+                                            handler:nil))
+        present(actionSheet, animated: true)
+    }
+    
+    func openPhotos() {
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = true
+        imagePicker.sourceType = .photoLibrary
+        present(imagePicker, animated: true)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let newImage = info[.editedImage] as? UIImage else { return }
+        self.imageView.image = newImage
+    }
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
 }
