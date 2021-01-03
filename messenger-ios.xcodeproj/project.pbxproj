@@ -19,6 +19,7 @@
 		32AE3A61258FD25700398C64 /* messenger_iosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AE3A60258FD25700398C64 /* messenger_iosUITests.swift */; };
 		4F6730FB6F270BD65F6BAEB9 /* Pods_messenger_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D4F8316B5FC39834BB4504B /* Pods_messenger_ios.framework */; };
 		BEE35523F9438460C43E6CE4 /* Pods_messenger_iosTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC2A78AA0C6523899510D205 /* Pods_messenger_iosTests.framework */; };
+		ED46C7A925A2736E009B93DF /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED46C7A825A2736E009B93DF /* DatabaseManager.swift */; };
 		ED97E4242590F72B00A1A0E7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED97E4232590F72B00A1A0E7 /* LoginViewController.swift */; };
 		ED97E42C2590F78100A1A0E7 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED97E42B2590F78100A1A0E7 /* RegisterViewController.swift */; };
 		ED97E4312590F7B300A1A0E7 /* PhotoViewerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED97E4302590F7B300A1A0E7 /* PhotoViewerViewController.swift */; };
@@ -68,6 +69,7 @@
 		BC2A78AA0C6523899510D205 /* Pods_messenger_iosTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_messenger_iosTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF48A8D6AA45FD0BAA16CBAF /* Pods-messenger-iosTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-messenger-iosTests.release.xcconfig"; path = "Target Support Files/Pods-messenger-iosTests/Pods-messenger-iosTests.release.xcconfig"; sourceTree = "<group>"; };
 		C6F39B4F9B42B705880FA12D /* Pods-messenger-iosTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-messenger-iosTests.debug.xcconfig"; path = "Target Support Files/Pods-messenger-iosTests/Pods-messenger-iosTests.debug.xcconfig"; sourceTree = "<group>"; };
+		ED46C7A825A2736E009B93DF /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		ED97E4232590F72B00A1A0E7 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		ED97E42B2590F78100A1A0E7 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		ED97E4302590F7B300A1A0E7 /* PhotoViewerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewerViewController.swift; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 				32AE3A3E258FD25000398C64 /* AppDelegate.swift */,
 				32AE3A40258FD25000398C64 /* SceneDelegate.swift */,
 				ED97E4482591021100A1A0E7 /* Extensions.swift */,
+				ED46C7A825A2736E009B93DF /* DatabaseManager.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -488,6 +491,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED97E4242590F72B00A1A0E7 /* LoginViewController.swift in Sources */,
+				ED46C7A925A2736E009B93DF /* DatabaseManager.swift in Sources */,
 				ED97E42C2590F78100A1A0E7 /* RegisterViewController.swift in Sources */,
 				ED97E43B2590F80E00A1A0E7 /* NewConversationViewController.swift in Sources */,
 				32AE3A43258FD25000398C64 /* ConservationsViewController.swift in Sources */,
