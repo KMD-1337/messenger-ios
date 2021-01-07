@@ -128,11 +128,12 @@ class LoginViewController: UIViewController {
             }
             
             guard let result = authResult, error == nil else {
-                print("Error")
+                print("ERROR: ")
                 return;
             }
             let user = result.user
-            print("\(user) logger in successfully")
+            print("\(user) logged in successfully")
+            
             strongSelf.navigationController?.dismiss(animated: true, completion: nil)
         }
     }
@@ -146,6 +147,7 @@ class LoginViewController: UIViewController {
     }
     
     @objc private func didTapRegister() {
+        print("TEST");
         let vc = RegisterViewController()
         vc.title = "Create Account"
         navigationController?.pushViewController(vc, animated: true)

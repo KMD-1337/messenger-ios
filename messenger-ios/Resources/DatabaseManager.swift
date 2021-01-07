@@ -9,6 +9,7 @@ import Foundation
 import FirebaseDatabase
 
 final class DatabaseManager {
+    var ref:DatabaseReference?
     
     static let shared = DatabaseManager()
     
@@ -41,11 +42,13 @@ extension DatabaseManager {
             "last_name": user.lastName
         ])
     }
+    
+    
 }
 
 struct ChatAppUser {
-    let firstname: String
-    let lastName: String
+    var firstname: String
+    var lastName: String
     let emailAddress: String
     
     var safeEmail: String {
