@@ -10,6 +10,7 @@ import FirebaseAuth
 
 class RegisterViewController: UIViewController {
     
+    
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.clipsToBounds = true
@@ -99,12 +100,9 @@ class RegisterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Log In"
+        
         view.backgroundColor = .white
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Register",
-                                                            style: .done,
-                                                            target: self,
-                                                            action: #selector(didTapRegister))
         registerButton.addTarget(self,
                                  action: #selector(registerButtonTapped),
                                  for: .touchUpInside)
@@ -174,6 +172,7 @@ class RegisterViewController: UIViewController {
               let lastName = lastNameField.text,
               let email = emailField.text,
               let password = passwordField.text,
+              let image = imageView.image,
               !email.isEmpty,
               !password.isEmpty,
               !firstName.isEmpty,
@@ -182,6 +181,7 @@ class RegisterViewController: UIViewController {
             alertUserLoginError()
             return
         }
+        
         
         DatabaseManager.shared.userExists(with: email, completion: { [weak self] exists in
             guard let strongSelf = self else {
@@ -206,6 +206,8 @@ class RegisterViewController: UIViewController {
                 strongSelf.navigationController?.dismiss(animated: true, completion: nil)
             })
         })
+        
+        FBStorageManager.shared.uploadProfilePicture(email, image)
     }
     func alertUserLoginError(message: String = "Enter all information.") {
         let alert = UIAlertController(title: "Woops",

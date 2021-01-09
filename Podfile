@@ -6,6 +6,7 @@ target 'messenger-ios' do
     pod 'Firebase/Core'
     pod 'Firebase/Auth'
     pod 'Firebase/Database'
+    pod 'Firebase/Storage'
 
   target 'messenger-iosTests' do
     inherit! :search_paths

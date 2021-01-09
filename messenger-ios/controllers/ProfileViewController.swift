@@ -22,12 +22,18 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        getNames()
+        
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "basicStyleCell")
         tableView.delegate = self
         tableView.dataSource = self
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        getNames()
+    }
+    
     
     public func getNames() {
         name.text = ""
@@ -39,13 +45,11 @@ class ProfileViewController: UIViewController {
         
         let getEmail = Auth.auth().currentUser?.email
         if let email = getEmail {
-        var safeEmail: String {
-            var safeEmail = email.replacingOccurrences(of: ".", with: "-")
-            safeEmail = safeEmail.replacingOccurrences(of: "@", with: "-")
-            return safeEmail
-        }
-        
-        ref = Database.database().reference()
+            var safeEmail: String {
+                var safeEmail = email.replacingOccurrences(of: ".", with: "-")
+                safeEmail = safeEmail.replacingOccurrences(of: "@", with: "-")
+                return safeEmail
+            }
             ref?.child(safeEmail).observe(DataEventType.value, with: { (snapshot) in
             if let data = snapshot.value as? [String: Any] {
                 print(data)

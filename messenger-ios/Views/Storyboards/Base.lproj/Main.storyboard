@@ -11,7 +11,7 @@
         <!--Conversations-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ConservationsViewController" customModule="messenger_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ConversationsViewController" customModule="messenger_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -28,7 +28,7 @@
         <scene sceneID="zEX-xK-u9e">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="pV5-dT-H1B" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Conversations" image="message" catalog="system" id="kQ5-sQ-1Gt"/>
+                    <tabBarItem key="tabBarItem" title="Conversations" image="message.fill" catalog="system" id="kQ5-sQ-1Gt"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="uFw-bK-mwp">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -66,7 +66,7 @@
         <scene sceneID="XLg-DI-015">
             <objects>
                 <navigationController id="GR7-Sc-fmb" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" image="person" catalog="system" id="swR-wB-Qjb" colorLabel="IBBuiltInLabel-Orange"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="person.fill" catalog="system" id="swR-wB-Qjb" colorLabel="IBBuiltInLabel-Orange"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Uqf-d9-Zea">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -128,8 +128,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="message" catalog="system" width="128" height="113"/>
-        <image name="person" catalog="system" width="128" height="117"/>
+        <image name="message.fill" catalog="system" width="128" height="113"/>
+        <image name="person.fill" catalog="system" width="128" height="120"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
