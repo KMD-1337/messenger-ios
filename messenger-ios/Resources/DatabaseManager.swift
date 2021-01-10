@@ -56,6 +56,4 @@ struct ChatAppUser {
         safeEmail = safeEmail.replacingOccurrences(of: "@", with: "-")
         return safeEmail
     }
-    
-  //  let profilePictureUrl: String
 }

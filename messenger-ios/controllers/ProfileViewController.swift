@@ -45,7 +45,7 @@ class ProfileViewController: UIViewController {
         lastName.font = UIFont.systemFont(ofSize: 20.0)
         
         ref = Database.database().reference()
-
+        
         let getEmail = Auth.auth().currentUser?.email
         if let email = getEmail {
             var safeEmail: String {
@@ -54,15 +54,15 @@ class ProfileViewController: UIViewController {
                 return safeEmail
             }
             ref?.child(safeEmail).observe(DataEventType.value, with: { (snapshot) in
-            if let data = snapshot.value as? [String: Any] {
-                print(data)
-                self.name.text = data["first_name"] as? String
-                self.lastName.text = data["last_name"] as? String
-                
-            } else {
-                
-            }
-        })
+                if let data = snapshot.value as? [String: Any] {
+                    print(data)
+                    self.name.text = data["first_name"] as? String
+                    self.lastName.text = data["last_name"] as? String
+                    
+                } else {
+                    
+                }
+            })
         }
     }
     
@@ -84,14 +84,14 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         do {
-           try FirebaseAuth.Auth.auth().signOut()
-           let vc = LoginViewController()
-           let nav = UINavigationController(rootViewController: vc)
-           nav.modalPresentationStyle = .fullScreen
-           present(nav, animated: true)
+            try FirebaseAuth.Auth.auth().signOut()
+            let vc = LoginViewController()
+            let nav = UINavigationController(rootViewController: vc)
+            nav.modalPresentationStyle = .fullScreen
+            present(nav, animated: true)
         }
         catch {
-            
+            print("Error while signing out")
         }
     }
     
@@ -116,13 +116,13 @@ extension ProfileViewController {
             if let error = error {
                 print("Error while downloading the avatar: \(error.localizedDescription)")
             }
+            
             if let avatar = data, error == nil {
                 self?.profileImage.image = UIImage(data: avatar)
             }
             
-            
-            
         }
         
     }
+    
 }
