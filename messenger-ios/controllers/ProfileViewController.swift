@@ -60,7 +60,7 @@ class ProfileViewController: UIViewController {
                     self.lastName.text = data["last_name"] as? String
                     
                 } else {
-                    
+                    print("error while getting data from db")
                 }
             })
         }
