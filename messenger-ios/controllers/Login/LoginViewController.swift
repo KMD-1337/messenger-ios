@@ -9,20 +9,20 @@ import UIKit
 import FirebaseAuth
 
 class LoginViewController: UIViewController {
-    
+
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.clipsToBounds = true
         return scrollView
     }()
-    
+
     private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "logo")
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
-    
+
     private let emailField: UITextField = {
         let field = UITextField()
         field.autocapitalizationType = .none
@@ -37,7 +37,7 @@ class LoginViewController: UIViewController {
         field.backgroundColor = .white
         return field
     }()
-    
+
     private let passwordField: UITextField = {
         let field = UITextField()
         field.autocapitalizationType = .none
@@ -51,10 +51,10 @@ class LoginViewController: UIViewController {
         field.leftViewMode = .always
         field.backgroundColor = .white
         field.isSecureTextEntry = true
-        
+
         return field
     }()
-    
+
     private let loginButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = .link
@@ -69,7 +69,7 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         title = "Log In"
         view.backgroundColor = .white
-        
+
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Register",
                                                             style: .done,
                                                             target: self,
@@ -77,18 +77,18 @@ class LoginViewController: UIViewController {
         loginButton.addTarget(self,
                               action: #selector(loginButtonTapped),
                               for: .touchUpInside)
-        
+
         emailField.delegate = self
         passwordField.delegate = self
-        
-        
+
+
         view.addSubview(scrollView)
         scrollView.addSubview(imageView)
         scrollView.addSubview(emailField)
         scrollView.addSubview(passwordField)
         scrollView.addSubview(loginButton)
     }
-    
+
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         scrollView.frame = view.bounds
@@ -110,34 +110,34 @@ class LoginViewController: UIViewController {
                                    width: scrollView.width-60,
                                    height: 52)
     }
-    
+
     @objc private func loginButtonTapped() {
-        
+
         emailField.resignFirstResponder()
         passwordField.resignFirstResponder()
-        
+
         guard let email = emailField.text, let password = passwordField.text,
               !email.isEmpty, !password.isEmpty, password.count >= 6 else {
             alertUserLoginError()
             return
         }
-        
+
         FirebaseAuth.Auth.auth().signIn(withEmail: email, password: password) {[weak self] authResult, error in
             guard let strongSelf = self else {
                 return
             }
-            
+
             guard let result = authResult, error == nil else {
                 print("ERROR: ")
                 return;
             }
             let user = result.user
             print("\(user) logged in successfully")
-            
+
             strongSelf.navigationController?.dismiss(animated: true, completion: nil)
         }
     }
-    
+
     func alertUserLoginError() {
         let alert = UIAlertController(title: "Woops",
                                       message: "Enter all information to log in",
@@ -145,7 +145,7 @@ class LoginViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
         present(alert, animated: true)
     }
-    
+
     @objc private func didTapRegister() {
         let vc = RegisterViewController()
         vc.title = "Create Account"
@@ -155,15 +155,16 @@ class LoginViewController: UIViewController {
 
 extension LoginViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        
+
         if textField == emailField {
             passwordField.becomeFirstResponder()
         }
-        
+
         else if textField == passwordField {
             loginButtonTapped()
         }
-        
+
         return true
     }
 }
+

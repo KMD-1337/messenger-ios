@@ -7,6 +7,8 @@ target 'messenger-ios' do
     pod 'Firebase/Auth'
     pod 'Firebase/Database'
     pod 'Firebase/Storage'
+    pod 'JGProgressHUD'
+    pod 'MessageKit'
 
   target 'messenger-iosTests' do
     inherit! :search_paths

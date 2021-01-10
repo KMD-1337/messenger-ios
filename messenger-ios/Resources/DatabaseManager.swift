@@ -57,5 +57,5 @@ struct ChatAppUser {
         return safeEmail
     }
     
-    //    let profilePictureUrl: String
+  //  let profilePictureUrl: String
 }

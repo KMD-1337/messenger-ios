@@ -25,7 +25,7 @@ extension FBStorageManager{
         
         uploadRef.putData(imageData, metadata: uploadMetadata) { (downloadMetadata, error) in
             if let err = error {
-                print("There was an error while uploading your picture")
+                print("There was an error while uploading your picture. Error:", err)
             } else {
                 print("Picture was uploaded successfully")
             }

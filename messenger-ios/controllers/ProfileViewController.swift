@@ -42,7 +42,7 @@ class ProfileViewController: UIViewController {
         lastName.font = UIFont.systemFont(ofSize: 20.0)
         
         ref = Database.database().reference()
-        
+
         let getEmail = Auth.auth().currentUser?.email
         if let email = getEmail {
             var safeEmail: String {
