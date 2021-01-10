@@ -105,6 +105,10 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1fS-gW-HQT">
+                                <rect key="frame" x="34" y="97" width="103" height="103"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6oG-bi-9Qj"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -119,6 +123,7 @@
                     <connections>
                         <outlet property="lastName" destination="S9Z-bF-rqV" id="OHi-H1-NjP"/>
                         <outlet property="name" destination="bNt-wA-usJ" id="JuY-iZ-gei"/>
+                        <outlet property="profileImage" destination="1fS-gW-HQT" id="Js1-yF-p9k"/>
                         <outlet property="tableView" destination="VlK-sn-a1D" id="Ckg-3n-IkA"/>
                     </connections>
                 </viewController>

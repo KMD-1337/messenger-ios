@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 import FirebaseAuth
 import FirebaseDatabase
 
@@ -14,6 +15,8 @@ class ProfileViewController: UIViewController {
     @IBOutlet var tableView: UITableView!
     @IBOutlet var name: UILabel!
     @IBOutlet var lastName: UILabel!
+    @IBOutlet var profileImage: UIImageView!
+    
     
     var ref:DatabaseReference!
     
@@ -22,8 +25,6 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "basicStyleCell")
         tableView.delegate = self
         tableView.dataSource = self
@@ -31,6 +32,8 @@ class ProfileViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        profileImage = profileImageCustomization()
+        getProfilePicture()
         getNames()
     }
     
@@ -92,4 +95,34 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+}
+
+extension ProfileViewController {
+    func profileImageCustomization() -> UIImageView {
+        profileImage.image = UIImage(systemName: "person.circle")
+        profileImage.contentMode = .scaleAspectFit
+        profileImage.layer.cornerRadius = profileImage.width/2
+        return profileImage
+    }
+    
+    func getProfilePicture() {
+        guard let currentUserEmail = Auth.auth().currentUser?.email else {
+            return
+        }
+        
+        let link = "profilePictures/" + currentUserEmail + ".jpg"
+        let storageRef = Storage.storage().reference(withPath: link)
+        storageRef.getData(maxSize: 4 * 1024 * 1024) { [weak self] (data, error) in
+            if let error = error {
+                print("Error while downloading the avatar: \(error.localizedDescription)")
+            }
+            if let avatar = data, error == nil {
+                self?.profileImage.image = UIImage(data: avatar)
+            }
+            
+            
+            
+        }
+        
+    }
 }
