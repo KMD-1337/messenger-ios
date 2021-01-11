@@ -18,13 +18,15 @@ class ProfileViewController: UIViewController {
     @IBOutlet var profileImage: UIImageView!
     
     
+    
     var ref:DatabaseReference!
     
-    let rows = ["Log Out"]
+    let rows = ["Settings","Log Out"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print("test")
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "basicStyleCell")
         tableView.delegate = self
         tableView.dataSource = self
@@ -32,6 +34,7 @@ class ProfileViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        print("test2")
         profileImage = profileImageCustomization()
         getProfilePicture()
         getNames()
@@ -53,7 +56,7 @@ class ProfileViewController: UIViewController {
                 safeEmail = safeEmail.replacingOccurrences(of: "@", with: "-")
                 return safeEmail
             }
-            ref?.child(safeEmail).observe(DataEventType.value, with: { (snapshot) in
+            ref?.child(safeEmail).observeSingleEvent(of: .value, with: { (snapshot) in
                 if let data = snapshot.value as? [String: Any] {
                     print(data)
                     self.name.text = data["first_name"] as? String
@@ -72,26 +75,39 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return rows.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "basicStyleCell", for: indexPath)
+        
         cell.textLabel?.text = rows[indexPath.row]
-        cell.textLabel?.textColor = .red
-        cell.textLabel?.textAlignment = .center
+        cell.textLabel?.textColor = .black
+        cell.textLabel?.textAlignment = .natural
+        cell.accessoryType = .disclosureIndicator
+        if(indexPath.row == (rows.count - 1)) {
+            cell.textLabel?.textColor = .red
+            cell.textLabel?.textAlignment = .center
+        }
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         tableView.deselectRow(at: indexPath, animated: true)
-        do {
-            try FirebaseAuth.Auth.auth().signOut()
-            let vc = LoginViewController()
-            let nav = UINavigationController(rootViewController: vc)
-            nav.modalPresentationStyle = .fullScreen
-            present(nav, animated: true)
-        }
-        catch {
-            print("Error while signing out")
+        if(indexPath.row == (rows.count - 1)){
+            do {
+                try FirebaseAuth.Auth.auth().signOut()
+                let vc = LoginViewController()
+                let nav = UINavigationController(rootViewController: vc)
+                nav.modalPresentationStyle = .fullScreen
+                present(nav, animated: true)
+            }
+            catch {
+                print("Error while signing out")
+            }
+        } else if (indexPath.row == 0) {
+            let vc = SettingsViewController()
+            vc.title = "Settings"
+            navigationController?.pushViewController(vc, animated: true)
         }
     }
     

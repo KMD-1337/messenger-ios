@@ -139,6 +139,7 @@ class LoginViewController: UIViewController {
             }
             
             guard let result = authResult, error == nil else {
+                self!.alertUserDoesNotExistError()
                 print("ERROR: \(String(describing: error)) ")
                 return
             }
@@ -148,14 +149,6 @@ class LoginViewController: UIViewController {
             
             strongSelf.navigationController?.dismiss(animated: true, completion: nil)
         })
-    }
-
-    func alertUserLoginError() {
-        let alert = UIAlertController(title: "Woops",
-                                      message: "Enter all information to log in",
-                                      preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
-        present(alert, animated: true)
     }
 
     @objc private func didTapRegister() {
@@ -180,3 +173,24 @@ extension LoginViewController: UITextFieldDelegate {
     }
 }
 
+extension LoginViewController {
+    func alertUserLoginError() {
+        let alert = UIAlertController(title: "Whoops",
+                                      message: "Enter all information to log in",
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+        present(alert, animated: true)
+    }
+    
+    func alertUserDoesNotExistError() {
+        let errorMessage = """
+        The e-mail or password you've entered
+        doesn't match any account. \n Sign up now!
+        """
+        let alert = UIAlertController(title: "Whoops",
+                                      message: errorMessage,
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+        present(alert, animated: true)
+    }
+}

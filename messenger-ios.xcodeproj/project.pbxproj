@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		015D657A3C408E99AAE9FA53 /* Pods_messenger_ios_messenger_iosUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9A0CBFF427141E2FE28B0CA /* Pods_messenger_ios_messenger_iosUITests.framework */; };
 		321D87542594CA26008008EF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 321D87532594CA25008008EF /* GoogleService-Info.plist */; };
+		329BA00825AC86BC002F792E /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329BA00725AC86BC002F792E /* SettingsViewController.swift */; };
+		329BA02925ACA476002F792E /* FieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329BA02725ACA476002F792E /* FieldTableViewCell.swift */; };
+		329BA02A25ACA476002F792E /* FieldTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 329BA02825ACA476002F792E /* FieldTableViewCell.xib */; };
 		32AE3A3F258FD25000398C64 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AE3A3E258FD25000398C64 /* AppDelegate.swift */; };
 		32AE3A41258FD25000398C64 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AE3A40258FD25000398C64 /* SceneDelegate.swift */; };
 		32AE3A43258FD25000398C64 /* ConversationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AE3A42258FD25000398C64 /* ConversationsViewController.swift */; };
@@ -54,6 +57,9 @@
 		13F469FE2CA96FBECCAA978E /* Pods-messenger-ios-messenger-iosUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-messenger-ios-messenger-iosUITests.debug.xcconfig"; path = "Target Support Files/Pods-messenger-ios-messenger-iosUITests/Pods-messenger-ios-messenger-iosUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		21D1F571990B9EBC217AECB9 /* Pods-messenger-ios-messenger-iosUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-messenger-ios-messenger-iosUITests.release.xcconfig"; path = "Target Support Files/Pods-messenger-ios-messenger-iosUITests/Pods-messenger-ios-messenger-iosUITests.release.xcconfig"; sourceTree = "<group>"; };
 		321D87532594CA25008008EF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		329BA00725AC86BC002F792E /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		329BA02725ACA476002F792E /* FieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldTableViewCell.swift; sourceTree = "<group>"; };
+		329BA02825ACA476002F792E /* FieldTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FieldTableViewCell.xib; sourceTree = "<group>"; };
 		32AE3A3B258FD25000398C64 /* messenger-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "messenger-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		32AE3A3E258FD25000398C64 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		32AE3A40258FD25000398C64 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -115,6 +121,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		329BA00625AC8665002F792E /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				ED97E43F2590F83C00A1A0E7 /* ProfileViewController.swift */,
+				329BA00725AC86BC002F792E /* SettingsViewController.swift */,
+				329BA02725ACA476002F792E /* FieldTableViewCell.swift */,
+				329BA02825ACA476002F792E /* FieldTableViewCell.xib */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		32AE3A32258FD25000398C64 = {
 			isa = PBXGroup;
 			children = (
@@ -205,11 +222,11 @@
 		ED97E4172590F45F00A1A0E7 /* controllers */ = {
 			isa = PBXGroup;
 			children = (
+				329BA00625AC8665002F792E /* Profile */,
 				32CF355525A9EBCC00999F06 /* Conversations */,
 				ED97E4442590F9E200A1A0E7 /* Login */,
 				ED97E4302590F7B300A1A0E7 /* PhotoViewerViewController.swift */,
 				ED97E4352590F7DB00A1A0E7 /* VieoPlayerViewController.swift */,
-				ED97E43F2590F83C00A1A0E7 /* ProfileViewController.swift */,
 				ED8EE31925AA8D7F00A0770E /* ChatViewController.swift */,
 			);
 			path = controllers;
@@ -377,6 +394,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				32AE3A4B258FD25400398C64 /* LaunchScreen.storyboard in Resources */,
+				329BA02A25ACA476002F792E /* FieldTableViewCell.xib in Resources */,
 				321D87542594CA26008008EF /* GoogleService-Info.plist in Resources */,
 				32AE3A48258FD25400398C64 /* Assets.xcassets in Resources */,
 				32AE3A46258FD25000398C64 /* Main.storyboard in Resources */,
@@ -515,7 +533,9 @@
 				ED97E43B2590F80E00A1A0E7 /* NewConversationViewController.swift in Sources */,
 				32AE3A43258FD25000398C64 /* ConversationsViewController.swift in Sources */,
 				ED97E4362590F7DB00A1A0E7 /* VieoPlayerViewController.swift in Sources */,
+				329BA00825AC86BC002F792E /* SettingsViewController.swift in Sources */,
 				ED97E4492591021100A1A0E7 /* Extensions.swift in Sources */,
+				329BA02925ACA476002F792E /* FieldTableViewCell.swift in Sources */,
 				32AE3A3F258FD25000398C64 /* AppDelegate.swift in Sources */,
 				ED8EE31A25AA8D7F00A0770E /* ChatViewController.swift in Sources */,
 				ED97E4402590F83C00A1A0E7 /* ProfileViewController.swift in Sources */,

@@ -84,6 +84,17 @@ extension DatabaseManager {
             })
         })
     }
+    public func updateUsers(with email:String, first_name:String, last_name: String) {
+        let userRef = database.child(email)
+        userRef.updateChildValues(["first_name": first_name, "last_name": last_name]) {
+            (error:Error?, database:DatabaseReference) in
+            if let error = error {
+                print("Error while updating data: \(error.localizedDescription)")
+            } else {
+                print("Data has been updated successfully")
+            }
+         }
+    }
     
     public func getAllUsers(completion: @escaping (Result<[[String: String]], Error>) -> Void) {
         database.child("users").observeSingleEvent(of: .value, with: { snapshot in
