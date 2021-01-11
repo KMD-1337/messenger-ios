@@ -7,8 +7,11 @@
 
 import UIKit
 import FirebaseAuth
+import JGProgressHUD
 
 class LoginViewController: UIViewController {
+    
+    private let spinner = JGProgressHUD(style: .dark)
 
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -65,6 +68,7 @@ class LoginViewController: UIViewController {
         button.titleLabel?.font = .systemFont(ofSize: 20, weight: .bold)
         return button
     }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Log In"
@@ -99,15 +103,15 @@ class LoginViewController: UIViewController {
                                  height: size)
         emailField.frame = CGRect(x: 30,
                                   y: imageView.bottom + 10,
-                                  width: scrollView.width-60,
+                                  width: scrollView.width - 60,
                                   height: 52)
         passwordField.frame = CGRect(x: 30,
                                      y: emailField.bottom + 10,
-                                     width: scrollView.width-60,
+                                     width: scrollView.width - 60,
                                      height: 52)
         loginButton.frame = CGRect(x: 30,
                                    y: passwordField.bottom + 10,
-                                   width: scrollView.width-60,
+                                   width: scrollView.width - 60,
                                    height: 52)
     }
 
@@ -122,20 +126,28 @@ class LoginViewController: UIViewController {
             return
         }
 
-        FirebaseAuth.Auth.auth().signIn(withEmail: email, password: password) {[weak self] authResult, error in
+        spinner.show(in: view)
+        
+        // Log in of firebase
+        FirebaseAuth.Auth.auth().signIn(withEmail: email, password: password, completion: { [weak self] authResult, error in
             guard let strongSelf = self else {
                 return
             }
-
-            guard let result = authResult, error == nil else {
-                print("ERROR: ")
-                return;
+            
+            DispatchQueue.main.async {
+                strongSelf.spinner.dismiss()
             }
+            
+            guard let result = authResult, error == nil else {
+                print("ERROR: \(String(describing: error)) ")
+                return
+            }
+            
             let user = result.user
             print("\(user) logged in successfully")
-
+            
             strongSelf.navigationController?.dismiss(animated: true, completion: nil)
-        }
+        })
     }
 
     func alertUserLoginError() {
