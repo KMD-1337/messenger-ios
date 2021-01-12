@@ -17,8 +17,6 @@ class ProfileViewController: UIViewController {
     @IBOutlet var lastName: UILabel!
     @IBOutlet var profileImage: UIImageView!
     
-    
-    
     var ref:DatabaseReference!
     
     let rows = ["Settings","Log Out"]
@@ -26,7 +24,6 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("test")
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "basicStyleCell")
         tableView.delegate = self
         tableView.dataSource = self
@@ -34,7 +31,7 @@ class ProfileViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        print("test2")
+        
         profileImage = profileImageCustomization()
         getProfilePicture()
         getNames()
@@ -83,17 +80,18 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         cell.textLabel?.textColor = .black
         cell.textLabel?.textAlignment = .natural
         cell.accessoryType = .disclosureIndicator
-        if(indexPath.row == (rows.count - 1)) {
+        if (indexPath.row == (rows.count - 1)) {
             cell.textLabel?.textColor = .red
             cell.textLabel?.textAlignment = .center
         }
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         tableView.deselectRow(at: indexPath, animated: true)
-        if(indexPath.row == (rows.count - 1)){
+        if (indexPath.row == (rows.count - 1)){
             do {
                 try FirebaseAuth.Auth.auth().signOut()
                 let vc = LoginViewController()
@@ -110,7 +108,6 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             navigationController?.pushViewController(vc, animated: true)
         }
     }
-    
 }
 
 extension ProfileViewController {
@@ -136,9 +133,6 @@ extension ProfileViewController {
             if let avatar = data, error == nil {
                 self?.profileImage.image = UIImage(data: avatar)
             }
-            
         }
-        
     }
-    
 }

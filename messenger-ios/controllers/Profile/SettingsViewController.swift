@@ -9,18 +9,16 @@ import UIKit
 import FirebaseAuth
 
 class SettingsViewController: UIViewController {
-    var updatedName:String?
-    var updatedLastName:String?
+    var updatedName: String?
+    var updatedLastName: String?
     
     private let tableView: UITableView = {
         let table = UITableView(frame: .zero, style: .grouped)
-        let nib = UINib(nibName:"FieldTableViewCell", bundle: nil)
+        let nib = UINib(nibName: "FieldTableViewCell", bundle: nil)
         table.register(nib, forCellReuseIdentifier: "FieldTableViewCell")
         
         return table
     }()
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,7 +49,7 @@ class SettingsViewController: UIViewController {
                 return safeEmail
             }
             if let updatedName = updatedName, let updatedLastName = updatedLastName {
-                DatabaseManager.shared.updateUsers(with: safeEmail, first_name: updatedName, last_name:     updatedLastName)
+                DatabaseManager.shared.updateUsers(with: safeEmail, first_name: updatedName, last_name: updatedLastName)
             }
         }
         navigationController?.popViewController(animated: true)
@@ -95,7 +93,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
 extension SettingsViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         if !textField.text!.isEmpty {
-            if (textField.tag == 0){
+            if (textField.tag == 0) {
                 updatedName = textField.text
             } else if(textField.tag == 1) {
                 updatedLastName = textField.text
