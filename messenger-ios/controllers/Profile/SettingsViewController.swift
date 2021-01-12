@@ -50,6 +50,17 @@ class SettingsViewController: UIViewController {
             }
             if let updatedName = updatedName, let updatedLastName = updatedLastName {
                 DatabaseManager.shared.updateUsers(with: safeEmail, first_name: updatedName, last_name: updatedLastName)
+                
+                let chatUser = ChatAppUser(firstname: updatedName,
+                                           lastName: updatedLastName,
+                                           emailAddress: email)
+                DatabaseManager.shared.insertUser(with: chatUser, completion: { success in
+                    if success {
+                        print ("Successfully")
+                    } else {
+                        print("Unsuccessfully")
+                    }
+                })
             }
         }
         navigationController?.popViewController(animated: true)

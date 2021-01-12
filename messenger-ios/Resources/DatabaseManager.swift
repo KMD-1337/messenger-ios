@@ -84,6 +84,7 @@ extension DatabaseManager {
             })
         })
     }
+    
     public func updateUsers(with email:String, first_name:String, last_name: String) {
         let userRef = database.child(email)
         userRef.updateChildValues(["first_name": first_name, "last_name": last_name]) {
