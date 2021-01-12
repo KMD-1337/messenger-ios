@@ -32,5 +32,19 @@ extension FBStorageManager{
             
         }
     }
+    
+    func getPicture(_ email: String, complition: @escaping (Bool, Any?) -> Void) {
+        
+        let link = "profilePictures/" + email + ".jpg"
+        let storageRef = storage.reference(withPath: link)
+        storageRef.getData(maxSize: 4 * 1024 * 1024) {(data, error) in
+            if let avatar = data {
+                complition(true, avatar)
+            }
+            if let error = error {
+                print("Error while downloading the avatar: \(error.localizedDescription)")
+            }
+        }
+    }
 }
 

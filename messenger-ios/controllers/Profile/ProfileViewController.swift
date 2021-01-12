@@ -6,9 +6,8 @@
 //
 
 import UIKit
-import Firebase
 import FirebaseAuth
-import FirebaseDatabase
+
 
 class ProfileViewController: UIViewController {
     
@@ -16,8 +15,6 @@ class ProfileViewController: UIViewController {
     @IBOutlet var name: UILabel!
     @IBOutlet var lastName: UILabel!
     @IBOutlet var profileImage: UIImageView!
-    
-    var ref:DatabaseReference!
     
     let rows = ["Settings","Log Out"]
     
@@ -44,8 +41,6 @@ class ProfileViewController: UIViewController {
         lastName.text = ""
         lastName.font = UIFont.systemFont(ofSize: 20.0)
         
-        ref = Database.database().reference()
-        
         let getEmail = Auth.auth().currentUser?.email
         if let email = getEmail {
             var safeEmail: String {
@@ -53,19 +48,14 @@ class ProfileViewController: UIViewController {
                 safeEmail = safeEmail.replacingOccurrences(of: "@", with: "-")
                 return safeEmail
             }
-            ref?.child(safeEmail).observeSingleEvent(of: .value, with: { (snapshot) in
-                if let data = snapshot.value as? [String: Any] {
-                    print(data)
+            DatabaseManager.shared.getUserNames(safeEmail) { (success, response) in
+                if success, let data = response as? [String: Any] {
                     self.name.text = data["first_name"] as? String
                     self.lastName.text = data["last_name"] as? String
-                    
-                } else {
-                    print("error while getting data from db")
                 }
-            })
+            }
         }
     }
-    
 }
 
 extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
@@ -123,14 +113,8 @@ extension ProfileViewController {
             return
         }
         
-        let link = "profilePictures/" + currentUserEmail + ".jpg"
-        let storageRef = Storage.storage().reference(withPath: link)
-        storageRef.getData(maxSize: 4 * 1024 * 1024) { [weak self] (data, error) in
-            if let error = error {
-                print("Error while downloading the avatar: \(error.localizedDescription)")
-            }
-            
-            if let avatar = data, error == nil {
+        FBStorageManager.shared.getPicture(currentUserEmail) { [weak self](success, response) in
+            if success, let avatar = response as? Data{
                 self?.profileImage.image = UIImage(data: avatar)
             }
         }

@@ -107,6 +107,19 @@ extension DatabaseManager {
             completion(.success(value))
         })
     }
+    
+    public func getUserNames(_ email: String, completion: @escaping (Bool, Any?) -> Void) {
+        database.child(email).observeSingleEvent(of: .value, with: { (snapshot) in
+            if let data = snapshot.value as? [String: Any] {
+                print(data)
+                completion(true, data)
+                
+            } else {
+                print("error while getting data from db")
+                completion(false, nil)
+            }
+        })
+    }
 
     public enum DatabaseError: Error {
         case failedToFetch
