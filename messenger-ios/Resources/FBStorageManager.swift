@@ -8,6 +8,8 @@
 import Foundation
 import Firebase
 
+
+//Firebase storage
 final class FBStorageManager{
     static let shared = FBStorageManager()
     
@@ -15,6 +17,7 @@ final class FBStorageManager{
 }
 
 extension FBStorageManager{
+    //Upload pictures
     func uploadProfilePicture(_ email: String,_ image: UIImage) {
         let uploadRef = storage.reference(withPath: "profilePictures/\(email).jpg")
         let uploadMetadata = StorageMetadata.init()
@@ -33,8 +36,8 @@ extension FBStorageManager{
         }
     }
     
+    //Download a picture from firebase storage
     func getPicture(_ email: String, complition: @escaping (Bool, Any?) -> Void) {
-        
         let link = "profilePictures/" + email + ".jpg"
         let storageRef = storage.reference(withPath: link)
         storageRef.getData(maxSize: 4 * 1024 * 1024) {(data, error) in
