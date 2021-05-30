@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseAuth
+import GoogleSignIn
 import JGProgressHUD
 
 class LoginViewController: UIViewController {
@@ -69,15 +70,28 @@ class LoginViewController: UIViewController {
         return button
     }()
     
+    private let google: GIDSignInButton = {
+        let button = GIDSignInButton()
+        button.layer.cornerRadius = 12
+        button.layer.masksToBounds = true
+        return button
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Log In"
         view.backgroundColor = .white
+        
+        NotificationCenter.default.addObserver(forName: Notification.Name("LoggedIn"), object: nil, queue: .main) { [weak self] arg in
+            self!.navigationController?.dismiss(animated: true, completion: nil)
+        }
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Register",
                                                             style: .done,
                                                             target: self,
                                                             action: #selector(didTapRegister))
+        
+        GIDSignIn.sharedInstance()?.presentingViewController = self
         loginButton.addTarget(self,
                               action: #selector(loginButtonTapped),
                               for: .touchUpInside)
@@ -91,6 +105,7 @@ class LoginViewController: UIViewController {
         scrollView.addSubview(emailField)
         scrollView.addSubview(passwordField)
         scrollView.addSubview(loginButton)
+        scrollView.addSubview(google)
     }
 
     override func viewDidLayoutSubviews() {
@@ -113,6 +128,10 @@ class LoginViewController: UIViewController {
                                    y: passwordField.bottom + 10,
                                    width: scrollView.width - 60,
                                    height: 52)
+        google.frame = CGRect(x: 30,
+                              y: loginButton.bottom + 10,
+                              width: scrollView.width - 60,
+                              height: 52)
     }
 
     @objc private func loginButtonTapped() {
@@ -150,6 +169,7 @@ class LoginViewController: UIViewController {
             strongSelf.navigationController?.dismiss(animated: true, completion: nil)
         })
     }
+    
 
     @objc private func didTapRegister() {
         let vc = RegisterViewController()
@@ -157,6 +177,7 @@ class LoginViewController: UIViewController {
         navigationController?.pushViewController(vc, animated: true)
     }
 }
+
 
 extension LoginViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

@@ -59,7 +59,7 @@ class SettingsViewController: UIViewController {
                 let chatUser = ChatAppUser(firstname: updatedN,
                                            lastName: updatedLastN,
                                            emailAddress: email)
-                DatabaseManager.shared.insertUser(with: chatUser, completion: { success in
+                DatabaseManager.shared.insertUser(with: chatUser, completion: { success, error in
                     if success {
                         print ("Successfully")
                     } else {

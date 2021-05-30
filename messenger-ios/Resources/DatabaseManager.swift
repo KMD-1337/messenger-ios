@@ -42,14 +42,14 @@ extension DatabaseManager {
     ///
     /// - Parameter user: Target user to be insert
     /// - Parameter completion: Async closure to return with result
-    public func insertUser(with user: ChatAppUser, completion: @escaping (Bool) -> Void) {
+    public func insertUser(with user: ChatAppUser, completion: @escaping (Bool, Error?) -> Void) {
         database.child(user.safeEmail).setValue([
             "first_name": user.firstname,
             "last_name": user.lastName
         ], withCompletionBlock: { error, _ in
             guard error == nil else {
                 print("An error has happened while writing to database")
-                completion(false)
+                completion(false, error)
                 return
             }
             
@@ -64,11 +64,11 @@ extension DatabaseManager {
                     
                     self.database.child("users").setValue(usersCollection, withCompletionBlock: { error, _ in
                         guard error == nil else {
-                            completion(false)
+                            completion(false, error)
                             return
                         }
                         
-                        completion(true)
+                        completion(true, nil)
                     })
                 } else {
                     // create an array of users
@@ -84,7 +84,7 @@ extension DatabaseManager {
                             return
                         }
                         
-                        completion(true)
+                        completion(true, nil)
                     })
                 }
             })

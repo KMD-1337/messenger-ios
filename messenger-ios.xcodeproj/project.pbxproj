@@ -161,8 +161,6 @@
 			children = (
 				321D87532594CA25008008EF /* GoogleService-Info.plist */,
 				ED97E41B2590F49800A1A0E7 /* Resources */,
-				ED97E41A2590F48700A1A0E7 /* ViewModels */,
-				ED97E4192590F47B00A1A0E7 /* Models */,
 				ED97E4182590F47300A1A0E7 /* Views */,
 				ED97E4172590F45F00A1A0E7 /* controllers */,
 				32AE3A4C258FD25400398C64 /* Info.plist */,
@@ -243,20 +241,6 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		ED97E4192590F47B00A1A0E7 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		ED97E41A2590F48700A1A0E7 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
 		ED97E41B2590F49800A1A0E7 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -300,6 +284,7 @@
 				32AE3A38258FD25000398C64 /* Frameworks */,
 				32AE3A39258FD25000398C64 /* Resources */,
 				F81D41B8C6A96000C6BFEC2F /* [CP] Embed Pods Frameworks */,
+				E84745FFFABD108FC7B33AAF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -338,6 +323,7 @@
 				32AE3A59258FD25600398C64 /* Frameworks */,
 				32AE3A5A258FD25600398C64 /* Resources */,
 				DB697EF847F9686B33FE2D0C /* [CP] Embed Pods Frameworks */,
+				6429643DBD4413DFB6E72AC6 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -465,6 +451,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		6429643DBD4413DFB6E72AC6 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-messenger-ios-messenger-iosUITests/Pods-messenger-ios-messenger-iosUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-messenger-ios-messenger-iosUITests/Pods-messenger-ios-messenger-iosUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-messenger-ios-messenger-iosUITests/Pods-messenger-ios-messenger-iosUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		D7FD205E8E2A7FDCC6461EA0 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -502,6 +505,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-messenger-ios-messenger-iosUITests/Pods-messenger-ios-messenger-iosUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E84745FFFABD108FC7B33AAF /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-messenger-ios/Pods-messenger-ios-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-messenger-ios/Pods-messenger-ios-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-messenger-ios/Pods-messenger-ios-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F81D41B8C6A96000C6BFEC2F /* [CP] Embed Pods Frameworks */ = {
