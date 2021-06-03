@@ -42,6 +42,36 @@ extension DatabaseManager {
     ///
     /// - Parameter user: Target user to be insert
     /// - Parameter completion: Async closure to return with result
+    public func insertChat(with user1: String, user2: String,completion: @escaping (Bool) -> Void) {
+        self.database.child("conversations").child(user1).observeSingleEvent(of: .value, with: { snapshot in
+            if var userCollection = snapshot.value as? [String: [[String]]]{
+                print(userCollection)
+                userCollection[user2] = [["en, en"]]
+                print(userCollection)
+                
+                
+                self.database.child("conversations").child(user1).setValue(userCollection) {error, _ in
+                    guard error == nil else {
+                        completion(false)
+                        return
+                    }
+                    completion(true)
+                  
+                }
+            } else {
+                let userCollection = [user2: [["en", "en"]]]
+                self.database.child("conversations").child(user1).setValue(userCollection) {error, _ in
+ 
+                    guard error == nil else {
+                        completion(false)
+                        return
+                    }
+                    completion(true)
+                }
+            }
+        })
+    }
+    
     public func insertUser(with user: ChatAppUser, completion: @escaping (Bool, Error?) -> Void) {
         database.child(user.safeEmail).setValue([
             "first_name": user.firstname,
@@ -131,12 +161,16 @@ extension DatabaseManager {
             completion(.success(value))
         })
     }
+    
+    
     /// Function that gets the username from firebase database
     ///
     /// - Parameter email: Target email to be getting user name
     /// - Parameter completion: Async closure to return with result
     public func getUserNames(_ email: String, completion: @escaping (Bool, Any?) -> Void) {
+        
         database.child(email).observeSingleEvent(of: .value, with: { (snapshot) in
+        
             if let data = snapshot.value as? [String: Any] {
                 print(data)
                 completion(true, data)
@@ -147,6 +181,22 @@ extension DatabaseManager {
             }
         })
     }
+    
+    public func getCurrentUserChats(with user: String, completion: @escaping (Bool, Any?) -> Void) {
+        
+        database.child("conversations").child(user).observeSingleEvent(of: .value){ snapshot in
+            if let data = snapshot.value as? [String: Any] {
+                completion(true, data)
+            } else {
+                print("error while getting data from db")
+                completion(false, nil)
+            }
+        }
+        
+    }
+    
+   
+    
     /// Enumeration for database error
     public enum DatabaseError: Error {
         case failedToFetch

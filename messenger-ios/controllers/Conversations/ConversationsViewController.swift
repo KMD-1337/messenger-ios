@@ -11,7 +11,12 @@ import JGProgressHUD
 
 class ConversationsViewController: UIViewController {
     
+    var arrOfChats = [String: [[String]]]()
+    var arrOfKeys = [String]()
+    
     private let spinner = JGProgressHUD(style: .dark)
+    
+    
     
     private let tableView: UITableView = {
         let table = UITableView()
@@ -41,6 +46,7 @@ class ConversationsViewController: UIViewController {
         setupTableView()
         fetchConversations()
     }
+   
     
     @objc private func didTapComposeButton() {
         let vc = NewConversationViewController()
@@ -57,6 +63,30 @@ class ConversationsViewController: UIViewController {
         super.viewDidAppear(animated)
         
         validateAuth()
+        getAllChats()
+    }
+    
+    private func getAllChats() {
+        let getEmail = Auth.auth().currentUser?.email
+        if let email = getEmail {
+            var safeEmail: String {
+                var safeEmail = email.replacingOccurrences(of: ".", with: "-")
+                safeEmail = safeEmail.replacingOccurrences(of: "@", with: "-")
+                return safeEmail
+            }
+            DatabaseManager.shared.getUserNames(safeEmail) {[weak self](success, response) in
+                if success, let data = response as? [String: Any] {
+                    let currentUserName = "\(data["first_name"] as! String) \(data["last_name"] as! String)"
+                    DatabaseManager.shared.getCurrentUserChats(with: currentUserName) {[weak self]success, data in
+                        if success {
+                            self?.arrOfChats = data as! [String: [[String]]]
+                            self?.arrOfKeys = Array((self?.arrOfChats.keys)!)
+                            self?.tableView.reloadData()
+                        }
+                    }
+                }
+            }
+        }
     }
     
     private func validateAuth() {
@@ -82,12 +112,12 @@ class ConversationsViewController: UIViewController {
 extension ConversationsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return arrOfKeys.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = "Hello"
+        cell.textLabel?.text = arrOfKeys[indexPath.row]
         cell.accessoryType = .disclosureIndicator
         return cell
     }
@@ -96,7 +126,7 @@ extension ConversationsViewController: UITableViewDelegate, UITableViewDataSourc
         tableView.deselectRow(at: indexPath, animated: true)
         
         let vc = ChatViewController()
-        vc.title = "Marcus Aurelius"
+        vc.title = arrOfKeys[indexPath.row]
         vc.navigationItem.largeTitleDisplayMode = .never
         navigationController?.pushViewController(vc, animated: true)
     }

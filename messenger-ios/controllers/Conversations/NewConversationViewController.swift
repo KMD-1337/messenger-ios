@@ -7,6 +7,7 @@
 
 import UIKit
 import JGProgressHUD
+import FirebaseAuth
 
 class NewConversationViewController: UIViewController {
 
@@ -91,6 +92,38 @@ extension NewConversationViewController: UITableViewDelegate, UITableViewDataSou
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let targetUserData = results[indexPath.row]
+        
+        let getEmail = Auth.auth().currentUser?.email
+        if let email = getEmail {
+            var safeEmail: String {
+                var safeEmail = email.replacingOccurrences(of: ".", with: "-")
+                safeEmail = safeEmail.replacingOccurrences(of: "@", with: "-")
+                return safeEmail
+            }
+            DatabaseManager.shared.getUserNames(safeEmail) {[weak self](success, response) in
+                if success, let data = response as? [String: Any] {
+                    let currentUserName = "\(data["first_name"] as! String) \(data["last_name"] as! String)"
+                    let targetUserName = "\(targetUserData["name"]!)"
+    
+
+                    DatabaseManager.shared.insertChat(with: currentUserName, user2: targetUserName) {success in
+                        if success {
+                            print ("Successfully")
+                        } else {
+                            print("Unsuccessfully")
+                        }
+                    }
+                    DatabaseManager.shared.insertChat(with: targetUserName, user2: currentUserName) {success in
+                        if success {
+                            print ("Successfully")
+                        } else {
+                            print("Unsuccessfully")
+                        }
+                    }
+                }
+            }
+        }
+        
         dismiss(animated: true, completion: { [weak self] in
             self?.completion?(targetUserData)
         })
@@ -98,7 +131,7 @@ extension NewConversationViewController: UITableViewDelegate, UITableViewDataSou
 }
 
 extension NewConversationViewController: UISearchBarDelegate {
-
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let text = searchBar.text, !text.replacingOccurrences(of: " ", with: "").isEmpty else {
             return
